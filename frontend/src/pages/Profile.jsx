@@ -20,7 +20,7 @@ export default function Profile() {
   const [editingPost, setEditingPost] = useState(null);
   const [editContent, setEditContent] = useState("");
   const [editPhoto, setEditPhoto] = useState(null);
-  const [previewUrl, setPreviewUrl] = useState(user?.users_photo_url ? `http://localhost:4000/${user.users_photo_url}` : '');
+  const [previewUrl, setPreviewUrl] = useState(user?.users_photo_url ? `http://34.237.55.18:4000/${user.users_photo_url}` : '');
   const [photo, setPhoto] = useState(user?.users_photo_url || null);
   const [image, setImage] = useState(null);
 
@@ -31,7 +31,7 @@ export default function Profile() {
       reader.onloadend = () => setPreviewUrl(reader.result);
       reader.readAsDataURL(photo);
     } else if (typeof photo === 'string') {
-      setPreviewUrl(`http://localhost:4000/${photo}`);
+      setPreviewUrl(`http://34.237.55.18:4000/${photo}`);
     }
   }, [photo]);
   const handleDropdownToggle = (postId) => {
@@ -242,7 +242,7 @@ export default function Profile() {
                     {post.posts_photo_url && (
                       <div className="mt-4 -mx-6">
                         <img
-                          src={`http://localhost:4000/${post.posts_photo_url}`}
+                          src={`http://34.237.55.18:4000/${post.posts_photo_url}`}
                           alt="Post"
                           className="w-full max-h-96 object-cover"
                         />
