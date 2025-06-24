@@ -47,7 +47,7 @@ export const useMyPosts = (token) => {
   return useQuery({
     queryKey: ['myPosts'],
     queryFn: async () => {
-      const res = await axios.get('http://localhost:4000/api/v1/posts/my-posts', {
+      const res = await axios.get('http://34.237.55.18:4000/api/v1/posts/my-posts', {
         headers: {
           Authorization: `Bearer ${token}`,
         },
