@@ -32,17 +32,17 @@ export const commentCreateValidation = [
     .isLength({ min: 2, max: 200 }).withMessage('Comment must be 2-200 characters')
     .custom((value) => value.replace(/<[^>]*>?/gm, '') === value).withMessage('No HTML tags allowed')
     .custom((value) => value.trim().length > 0).withMessage('Comment cannot be whitespace only'),
-  body('comments_posts_id')
-    .notEmpty().withMessage('Post ID is required')
-    .isInt().withMessage('Post ID must be an integer')
-    .custom(async (value) => {
-      const posts = (await import('../model/Posts.js')).default;
-      const post = await posts.findByPk(value);
-      if (!post || post.disabled === 1) {
-        throw new Error('Post ID does not reference an existing post');
-      }
-      return true;
-    }),
+  // body('comments_posts_id')
+  //   .notEmpty().withMessage('Post ID is required')
+  //   .isInt().withMessage('Post ID must be an integer')
+  //   .custom(async (value) => {
+  //     const posts = (await import('../model/Posts.js')).default;
+  //     const post = await posts.findByPk(value);
+  //     if (!post || post.disabled === 1) {
+  //       throw new Error('Post ID does not reference an existing post');
+  //     }
+  //     return true;
+  //   }),
 ];
 
 export const commentUpdateValidation = [

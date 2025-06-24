@@ -24,7 +24,7 @@ export const useUpdateComment = (token, postId) => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: ({ id, description }) =>
-      axios.put(`http://localhost:4000/api/v1/comments/${id}`, {
+      axios.put(`http://34.237.55.18:4000/api/v1/comments/${id}`, {
         comments_description: description,
       }, {
         headers: { Authorization: `Bearer ${token}` },

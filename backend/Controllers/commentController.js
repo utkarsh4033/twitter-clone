@@ -4,6 +4,7 @@ import { validationResult } from 'express-validator';
 
 export const createComment = async (req, res) => {
   const errors = validationResult(req);
+  // validation error message
   if (!errors.isEmpty()) {
     return res.status(400).json({ error: 'Validation failed: ' + errors.array().map(e => e.msg).join(', ') });
   }

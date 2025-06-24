@@ -10,7 +10,7 @@ dotenv.config();
 
 const app = express();
 app.use('/uploads', express.static('uploads'));
-app.use(cors())
+app.use(cors({ origin: 'http://34.237.55.18' }));
 app.use(express.json());
 
 const uploadDir = './uploads';
@@ -21,7 +21,7 @@ if (!fs.existsSync(uploadDir)) {
 app.use('/api/v1/auth', userRoutes);
 app.use('/api/v1/posts',postRoutes);
 app.use('/api/v1/comments',commentRoutes)
-
+  
 const PORT = process.env.PORT || 5000;
 
 sequelize.sync({ alter: true }).then(() => {

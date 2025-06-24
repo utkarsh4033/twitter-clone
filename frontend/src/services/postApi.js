@@ -1,5 +1,5 @@
 import axios from "axios";
-const API = "http://localhost:4000/api/v1/posts/";
+const API = "http://34.237.55.18:4000/api/v1/posts/";
 export const getAllPosts = () => axios.get(API);
 export const createPost = (data, token) =>
   axios.post(API, data, {

@@ -15,13 +15,13 @@ export const createPost = async (req, res) => {
   }
 
   try {
-    // multer sets req.file when a file is uploaded
+    
     const photoPath = req.file ? req.file.path : null;
 
     const post = await posts.create({
       posts_content,
-      posts_photo_url: photoPath, // save file path as string
-      posts_user_id: req.user.users_id, // authenticated user id
+      posts_photo_url: photoPath, 
+      posts_user_id: req.user.users_id, 
     });
 
     res.status(201).json(post);
@@ -90,17 +90,14 @@ export const updatePost = async (req, res) => {
 
     if (!post) return res.status(404).json({ message: 'Post not found' });
 
-    // Authorization check
     if (post.posts_user_id !== req.user.users_id && req.user.role !== 'admin') {
       return res.status(403).json({ message: 'Unauthorized' });
     }
 
-    // If new file uploaded, update photo path
     if (req.file) {
       post.posts_photo_url = req.file.path;
     }
 
-    // Update content if provided
     post.posts_content = posts_content || post.posts_content;
 
     await post.save();

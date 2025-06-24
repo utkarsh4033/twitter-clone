@@ -4,7 +4,6 @@ import CreatePostForm from "../components/Posts/CreatePostForm";
 import PostCard from "../components/Posts/PostCard";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
-import Profile from "./Profile";
 
 export default function Home({ token }) {
   const { data, isLoading } = usePosts();

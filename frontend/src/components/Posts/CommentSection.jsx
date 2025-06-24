@@ -215,7 +215,7 @@ function CommentSection({ postId }) {
             <button
               onClick={handleSubmit}
               disabled={!comment.trim() || comment.length < 2 || comment.length > 200}
-              className="bg-blue-500 text-white px-6 py-1.5 rounded-full font-bold hover:bg-blue-600 disabled:opacity-50"
+              className="bg-blue-500 text-white px-6 py-1.5 rounded-full font-bold hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
               Post
             </button>

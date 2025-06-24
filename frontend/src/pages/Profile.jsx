@@ -24,6 +24,7 @@ export default function Profile() {
   const [photo, setPhoto] = useState(user?.users_photo_url || null);
   const [image, setImage] = useState(null);
 
+  // handling photo preview
   useEffect(() => {
     if (photo && typeof photo !== 'string') {
       const reader = new FileReader();
@@ -48,26 +49,41 @@ export default function Profile() {
     toast.info(
       <div>
         <div>Are you sure you want to delete this post?</div>
-        <div style={{marginTop:8, display:'flex', gap:8}}>
-          <button onClick={async () => {
-            try {
-              await deletePostMutation.mutateAsync(postId);
-              setOpenDropdown(null);
-              refetch();
-              toast.dismiss();
-              toast.success("Post deleted successfully");
-            } catch (error) {
-              toast.dismiss();
-              toast.error("Failed to delete post");
-            }
-          }} style={{background:'#ef4444',color:'#fff',border:'none',padding:'4px 12px',borderRadius:4}}>Delete</button>
-          <button onClick={() => toast.dismiss()} style={{background:'#e5e7eb',color:'#111',border:'none',padding:'4px 12px',borderRadius:4}}>Cancel</button>
+        <div className="mt-2 flex gap-2">
+          <button
+            onClick={async () => {
+              try {
+                await deletePostMutation.mutateAsync(postId);
+                setOpenDropdown(null);
+                refetch();
+                toast.dismiss();
+                toast.success("Post deleted successfully");
+              } catch (error) {
+                toast.dismiss();
+                toast.error("Failed to delete post");
+              }
+            }}
+            className="bg-red-500 text-white border-none px-3 py-1 rounded"
+          >
+            Delete
+          </button>
+          <button
+            onClick={() => toast.dismiss()}
+            className="bg-gray-200 text-black border-none px-3 py-1 rounded"
+          >
+            Cancel
+          </button>
         </div>
       </div>,
-      { autoClose: false, closeOnClick: false, draggable: false, position: "top-center" }
+      {
+        autoClose: false,
+        closeOnClick: false,
+        draggable: false,
+        position: "top-center",
+      }
     );
   };
-
+  
   const toggleComments = (postId) => {
     setShowComments(prev => ({
       ...prev,

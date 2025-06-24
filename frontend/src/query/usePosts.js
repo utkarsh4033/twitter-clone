@@ -23,7 +23,7 @@ export const useUpdatePost = (token) => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: ({ postId, formData }) =>
-      axios.put(`http://localhost:4000/api/v1/posts/${postId}`, formData, {
+      axios.put(`http://34.237.55.18:4000/api/v1/posts/${postId}`, formData, {
         headers: { Authorization: `Bearer ${token}` },
       }),
     onSuccess: () => {
@@ -31,19 +31,6 @@ export const useUpdatePost = (token) => {
     },
   });
 };
-
-// export const useDeletePost = (token) => {
-//   const queryClient = useQueryClient();
-//   return useMutation({
-//     mutationFn: (id) =>
-//       axios.delete(`http://localhost:4000/api/v1/posts/${id}`, {
-//         headers: { Authorization: `Bearer ${token}` },
-//       }),
-//     onSuccess: () => {
-//       queryClient.invalidateQueries(['posts']);
-//     },
-//   });
-// };
 
 export const useDeletePost = (token) => {
   const queryClient = useQueryClient();
