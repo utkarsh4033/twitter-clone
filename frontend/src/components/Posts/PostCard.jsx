@@ -63,7 +63,7 @@ function PostCard({ post, token, index = 0 }) {
             {post.posts_photo_url && (
               <div className="mb-4 -mx-6">
                 <img
-                  src={`http://localhost:4000/${post.posts_photo_url}`}
+                  src={`http://34.237.55.18:4000/${post.posts_photo_url}`}
                   alt="Post"
                   className="w-full max-h-96 object-cover rounded-lg mx-6"
                   style={{ maxWidth: 'calc(100% - 3rem)' }}

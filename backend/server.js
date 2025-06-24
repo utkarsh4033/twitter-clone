@@ -22,7 +22,7 @@ app.use('/api/v1/auth', userRoutes);
 app.use('/api/v1/posts',postRoutes);
 app.use('/api/v1/comments',commentRoutes)
   
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT;
 
 sequelize.sync({ alter: true }).then(() => {
   console.log('Database connected and models synced');
