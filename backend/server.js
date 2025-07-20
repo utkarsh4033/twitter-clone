@@ -10,7 +10,7 @@ dotenv.config();
 
 const app = express();
 app.use('/uploads', express.static('uploads'));
-app.use(cors({ origin: 'http://34.237.55.18' }));
+app.use(cors());
 app.use(express.json());
 
 const uploadDir = './uploads';
@@ -26,6 +26,6 @@ const PORT = process.env.PORT;
 
 sequelize.sync({ alter: true }).then(() => {
   console.log('Database connected and models synced');
-  app.listen(PORT, '0.0.0.0', () => console.log(`Server running on port ${PORT}`));
+  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 });
 

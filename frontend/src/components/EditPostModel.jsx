@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 export default function EditPostModal({ post, onClose, token, onSuccess }) {
   const [content, setContent] = useState(post.posts_content || "");
   const [image, setImage] = useState(null);
-  const [previewUrl, setPreviewUrl] = useState(post.posts_photo_url ? `http://34.237.55.18:4000/${post.posts_photo_url}` : null);
+  const [previewUrl, setPreviewUrl] = useState(post.posts_photo_url ? `http://localhost:4000/${post.posts_photo_url}` : null);
 
   useEffect(() => {
     if (image) {
@@ -14,7 +14,7 @@ export default function EditPostModal({ post, onClose, token, onSuccess }) {
       reader.onloadend = () => setPreviewUrl(reader.result);
       reader.readAsDataURL(image);
     } else if (post.posts_photo_url) {
-      setPreviewUrl(`http://34.237.55.18:4000/${post.posts_photo_url}`);
+      setPreviewUrl(`http://localhost:4000/${post.posts_photo_url}`);
     } else {
       setPreviewUrl(null);
     }

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const API = axios.create({
-    baseURL: 'http://34.237.55.18:4000/api/v1/auth',
+    baseURL: 'http://localhost:4000/api/v1/auth',
 })
 
 export const registerUser = (data) => API.post('/register',data);
